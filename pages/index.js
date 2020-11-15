@@ -4,6 +4,8 @@ import axios from 'axios'
 import { useQuery, useMutation, queryCache } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
 
+// https://webformyself.com/kak-i-pochemu-vy-dolzhny-ispolzovat-react-query/
+
 export default () => {
   const [text, setText] = React.useState('')
   const { status, data, error, isFetching } = useQuery('todos', async () => {
@@ -16,7 +18,7 @@ export default () => {
     {
       onSuccess: () => {
         // Query Invalidations
-        // queryCache.invalidateQueries('todos')
+        queryCache.invalidateQueries('todos')
         setText('')
       },
     }
